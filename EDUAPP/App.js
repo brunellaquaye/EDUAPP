@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import MultimediaScreen from "./src/screens/MultimediaScreen";
+import ViewCourseDetails from "./src/screens/ViewCourseDetails";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="home">
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="home"
+            component={HomeScreen}
+          />
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+          {/* <Stack.Screen
+            options={{ headerShown: false }}
+            name="Multimedia"
+            component={MultimediaScreen}
+          /> */}
+
+          <Stack.Screen
+            options={{ headerShown: false }}
+            name="ViewCourseDetails"
+            component={ViewCourseDetails}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
+  );
+};
+
+export default App;
