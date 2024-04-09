@@ -19,11 +19,11 @@ const App = () => {
             component={HomeScreen}
           />
 
-          {/* <Stack.Screen
+          <Stack.Screen
             options={{ headerShown: false }}
             name="Multimedia"
             component={MultimediaScreen}
-          /> */}
+          />
 
           <Stack.Screen
             options={{ headerShown: false }}
